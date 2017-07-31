@@ -1,0 +1,48 @@
+.App .Modal {
+  display: none;
+}
+
+.App.name .Modal {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(5, 5, 5, 0.15);
+  z-index: 1000;
+}
+
+.Modal .NameBox {
+  width: 25%;
+  padding: 15px;
+  margin: 0 auto;
+  min-height: 10%;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  display: grid;
+  grid-template-rows: 4fr 2fr;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas:
+    "head head"
+    "input button";
+}
+
+.Modal .NameBox h3 {
+  grid-area: head;
+}
+
+.Modal .NameBox input {
+  grid-area: input;
+  color: #4A148C;
+  font-size: large;
+  border: solid 1px #42A5F5;
+}
+
+.Modal .NameBox button {
+  color: #fff;
+  grid-area: button;
+  background-color: #2196F3;
+  border: solid 1px #42A5F5;
+}

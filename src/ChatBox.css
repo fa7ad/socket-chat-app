@@ -1,0 +1,91 @@
+.name .ChatBox {
+  filter: blur(5px);
+}
+
+.ChatBox {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 4fr 0fr;
+  grid-template-columns: 1fr 5fr;
+  grid-template-areas:
+    "people history"
+    "people chat";
+}
+
+.ChatBox .People {
+  grid-area: people;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ccc;
+  background-color: #efefef;
+}
+
+.ChatBox .Person {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.Person img {
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.ChatBox .History {
+  grid-area: history;
+  display: flex;
+  flex-direction: column;
+}
+
+.ChatBox .MessageInput {
+  grid-area: chat;
+  display: flex;
+  flex-direction: row;
+}
+
+.MessageInput textarea {
+  outline: none;
+  border: solid 1px #42A5F5;
+  flex-basis: 90%;
+}
+
+.MessageInput button {
+  outline: none;
+  border: solid 1px #42A5F5;
+  background-color: #2196F3;
+  flex-basis: 10%;
+}
+
+.History .MessageShow {
+  border-bottom: 1px solid #ccc;
+  padding: 15px;
+}
+
+.MessageShow {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  grid-template-rows: 0fr 2fr;
+  grid-template-areas:
+    "name time"
+    "text text";
+}
+
+.MessageShow .Name {
+  grid-area: name;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.MessageShow .Time {
+  grid-area: time;
+  font-style: italic;
+  align-self: flex-end;
+}
+
+.MessageShow .Text {
+  grid-area: text;
+}
