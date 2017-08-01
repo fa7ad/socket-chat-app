@@ -6,7 +6,7 @@
   width: 100%;
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 4fr 0fr;
+  grid-template-rows: 90vh 10%;
   grid-template-columns: 1fr 5fr;
   grid-template-areas:
     "people history"
@@ -39,6 +39,7 @@
 }
 
 .ChatBox .History {
+  overflow-y: scroll;
   grid-area: history;
   display: flex;
   flex-direction: column;
