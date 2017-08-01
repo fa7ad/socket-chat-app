@@ -33,6 +33,9 @@
 .Person img {
   border-radius: 50%;
   margin-right: 15px;
+  width: 50px;
+  shape-outside: circle();
+  border: 1px solid #333;
 }
 
 .ChatBox .History {

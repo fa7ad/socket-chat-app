@@ -33,43 +33,33 @@ const server = http.createServer(app)
 const io = socketio(server)
 
 const socketUsers = []
+const msgHistory = []
 
 io.on('connection', function (socket) {
-  console.log('new connection')
-  let addedUser = false
-
-  socket.on('new message', function (message) {
-    socket.broadcast.emit('new message', {
-      username: socket.username,
-      message: message.text,
+  socket.on('new message', message => {
+    const msg = {
+      name: socket.name,
+      text: message.text,
       time: message.time
-    })
-  })
-
-  socket.on('add user', function (username) {
-    if (addedUser) return
-
-    Object.assign(socket, {username})
-    socketUsers.push(username)
-    addedUser = true
-
-    socket.broadcast.emit('user joined', {
-      username: socket.username,
-      users: socketUsers
-    })
-  })
-
-  socket.on('disconnect', function () {
-    console.log('ded')
-    if (addedUser) {
-      const userIdx = socketUsers.indexOf(socket.username)
-      if (userIdx !== -1) socketUsers.splice(userIdx, 1)
-
-      socket.broadcast.emit('user left', {
-        username: socket.username,
-        users: socketUsers
-      })
     }
+    msgHistory.push(msg)
+    this.emit('new message', msg)
+  })
+
+  socket.on('add user', name => {
+    if (socketUsers.indexOf(name) !== -1) return
+
+    Object.assign(socket, { name })
+    socketUsers.push(name)
+
+    this.emit('user joined', socketUsers)
+    socket.emit('old message', msgHistory.slice(-5))
+  })
+
+  socket.on('disconnect', () => {
+    const userIdx = socketUsers.indexOf(socket.name)
+    if (userIdx !== -1) socketUsers.splice(userIdx, 1)
+    this.emit('user left', socketUsers)
   })
 })
 

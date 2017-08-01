@@ -2,6 +2,7 @@ import { observable } from 'mobx'
 
 const DataStore = {
   name: '',
+  names: [],
   messages: []
 }
 

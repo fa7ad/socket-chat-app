@@ -2,39 +2,21 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
 import './ChatBox.css'
+import People from './People'
+import History from './History'
 
 class ChatBox extends Component {
   state = {
-    message: ''
+    message: '',
+    rerender: null
   }
 
   render () {
     const { data } = this.props
     return (
       <div className='ChatBox'>
-        <div className='People'>
-          {data.name.length > 1
-            ? <div className='Person'>
-              <img
-                src='//lorempixel.com/50/50/people'
-                alt={data.name}
-                className='avatar'
-                />
-              <b>{data.name}</b>
-            </div>
-            : ''}
-        </div>
-        <div className='History'>
-          {data.messages.map((el, idx) => (
-            <div className='MessageShow' key={idx}>
-              <div className='Name'>{el.name}</div>
-              <div className='Time'>
-                {new Date(el.time).toLocaleTimeString()}
-              </div>
-              <div className='Text'>{el.message}</div>
-            </div>
-          ))}
-        </div>
+        <People names={data.names} />
+        <History messages={data.messages} />
         <div className='MessageInput'>
           <textarea
             onChange={e => this.setState({ message: e.target.value })}
@@ -42,23 +24,38 @@ class ChatBox extends Component {
             rows='5'
             value={this.state.message}
           />
-          <button
-            onClick={e => {
-              this.state.message.length > 1 &&
-                data.messages.push({
-                  name: data.name,
-                  time: Date.now(),
-                  message: this.state.message
-                }) &&
-                this.setState({ message: '' })
-            }}
-          >
+          <button onClick={this.sendMessage}>
             Send
           </button>
         </div>
       </div>
     )
   }
+
+  sendMessage = e => {
+    if (this.state.message.length > 1) {
+      this.props.io.emit('new message', {
+        name: this.props.data.name,
+        time: Date.now(),
+        text: this.state.message
+      })
+      this.setState({ message: '' })
+    }
+  }
+
+  componentDidMount () {
+    const { data, io } = this.props
+    io.on('user joined', names => {
+      data.names = names
+    })
+    io.on('user left', names => {
+      data.names = names
+    })
+    io.on('new message', message => {
+      data.messages.push(message)
+    })
+    io.on('old message', messages => Object.assign(data, {messages}))
+  }
 }
 
-export default inject('data')(observer(ChatBox))
+export default inject('data', 'io')(observer(ChatBox))

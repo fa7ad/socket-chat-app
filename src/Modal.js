@@ -30,11 +30,13 @@ class Modal extends Component {
   }
 
   sendName = e => {
+    const { data, ui, io } = this.props
     if (this.state.name.length > 1) {
-      this.props.data.name = this.state.name
-      this.props.ui.showName = false
+      ui.showName = false
+      data.name = this.state.name
+      io.emit('add user', this.state.name)
     }
   }
 }
 
-export default inject('ui', 'data')(observer(Modal))
+export default inject('io', 'ui', 'data')(observer(Modal))
