@@ -150,6 +150,10 @@ arraybuffer.slice@0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/arraybuffer.slice/-/arraybuffer.slice-0.0.6.tgz#f33b2159f0532a3f3107a272c0ccfbd1ad2979ca"
 
+arraybuffer.slice@~0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/arraybuffer.slice/-/arraybuffer.slice-0.0.7.tgz#3bbc4275dd584cc1b10809b89d4e8b63a69e7675"
+
 asn1.js@^4.0.0:
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/asn1.js/-/asn1.js-4.9.1.tgz#48ba240b45a9280e94748990ba597d216617fd40"
@@ -763,6 +767,10 @@ binary-extensions@^1.0.0:
 blob@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.4.tgz#bcf13052ca54463f30f9fc7e95b9a47630a94921"
+
+blob@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
 
 block-stream@*:
   version "0.0.9"
@@ -1444,6 +1452,22 @@ engine.io-client@~3.3.1:
     xmlhttprequest-ssl "~1.5.4"
     yeast "0.1.2"
 
+engine.io-client@~3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/engine.io-client/-/engine.io-client-3.4.0.tgz#82a642b42862a9b3f7a188f41776b2deab643700"
+  dependencies:
+    component-emitter "1.2.1"
+    component-inherit "0.0.3"
+    debug "~4.1.0"
+    engine.io-parser "~2.2.0"
+    has-cors "1.1.0"
+    indexof "0.0.1"
+    parseqs "0.0.5"
+    parseuri "0.0.5"
+    ws "~6.1.0"
+    xmlhttprequest-ssl "~1.5.4"
+    yeast "0.1.2"
+
 engine.io-parser@~2.1.0, engine.io-parser@~2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-2.1.1.tgz#e0fb3f0e0462f7f58bb77c1a52e9f5a7e26e4668"
@@ -1452,6 +1476,16 @@ engine.io-parser@~2.1.0, engine.io-parser@~2.1.1:
     arraybuffer.slice "0.0.6"
     base64-arraybuffer "0.1.5"
     blob "0.0.4"
+    has-binary2 "~1.0.2"
+
+engine.io-parser@~2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-2.2.0.tgz#312c4894f57d52a02b420868da7b5c1c84af80ed"
+  dependencies:
+    after "0.8.2"
+    arraybuffer.slice "~0.0.7"
+    base64-arraybuffer "0.1.5"
+    blob "0.0.5"
     has-binary2 "~1.0.2"
 
 engine.io@~3.3.1:
@@ -3535,7 +3569,7 @@ socket.io-adapter@~1.1.0:
   dependencies:
     debug "2.3.3"
 
-socket.io-client@2.2.0, socket.io-client@^2.0.3:
+socket.io-client@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-2.2.0.tgz#84e73ee3c43d5020ccc1a258faeeb9aec2723af7"
   dependencies:
@@ -3545,6 +3579,25 @@ socket.io-client@2.2.0, socket.io-client@^2.0.3:
     component-emitter "1.2.1"
     debug "~3.1.0"
     engine.io-client "~3.3.1"
+    has-binary2 "~1.0.2"
+    has-cors "1.1.0"
+    indexof "0.0.1"
+    object-component "0.0.3"
+    parseqs "0.0.5"
+    parseuri "0.0.5"
+    socket.io-parser "~3.3.0"
+    to-array "0.1.4"
+
+socket.io-client@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-2.3.0.tgz#14d5ba2e00b9bcd145ae443ab96b3f86cbcc1bb4"
+  dependencies:
+    backo2 "1.0.2"
+    base64-arraybuffer "0.1.5"
+    component-bind "1.0.0"
+    component-emitter "1.2.1"
+    debug "~4.1.0"
+    engine.io-client "~3.4.0"
     has-binary2 "~1.0.2"
     has-cors "1.1.0"
     indexof "0.0.1"
